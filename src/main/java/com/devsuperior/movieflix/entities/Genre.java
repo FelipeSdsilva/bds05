@@ -2,32 +2,24 @@ package com.devsuperior.movieflix.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
-public class User implements Serializable {
+public class Genre implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
 	private String name;
-	private String email;
-	private String password;
 
-	private Set<Role> roles = new HashSet<>();
+	private List<Movie> movies = new ArrayList<>();
 
-	private List<Review> reviews = new ArrayList<>();
-
-	public User() {
+	public Genre() {
 	}
 
-	public User(Long id, String name, String email, String password) {
+	public Genre(Long id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.email = email;
-		this.password = password;
 	}
 
 	public Long getId() {
@@ -46,28 +38,8 @@ public class User implements Serializable {
 		this.name = name;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public Set<Role> getRoles() {
-		return roles;
-	}
-
-	public List<Review> getReviews() {
-		return reviews;
+	public List<Movie> getMovies() {
+		return movies;
 	}
 
 	@Override
@@ -83,7 +55,8 @@ public class User implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		Genre other = (Genre) obj;
 		return Objects.equals(id, other.id);
 	}
+
 }
