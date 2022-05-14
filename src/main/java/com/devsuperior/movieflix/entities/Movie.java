@@ -5,16 +5,30 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 public class Movie implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String title;
 	private String subTitle;
 	private Integer year;
 	private String imgUrl;
+	
+	@Column(columnDefinition="TEXT")
 	private String synopsis;
 
+	@ManyToOne
+	@JoinColumn(name ="genre_id")
 	private Genre genre;
 	
 	private List<Review> reviews = new ArrayList<>();
